@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Vuelos y Hoteles</title>
+    <script>
+        function validarFormulario() {
+            var origen = document.forms["vueloForm"]["origen"].value;
+            var destino = document.forms["vueloForm"]["destino"].value;
+            var fecha = document.forms["vueloForm"]["fecha"].value;
+            var plazas = document.forms["vueloForm"]["plazas_disponibles"].value;
+            var precio = document.forms["vueloForm"]["precio"].value;
+
+            if (origen == "" || destino == "" || fecha == "" || plazas == "" || precio == "") {
+                alert("Todos los campos de vuelo son obligatorios.");
+                return false;
+            }
+
+            var nombre = document.forms["hotelForm"]["nombre"].value;
+            var ubicacion = document.forms["hotelForm"]["ubicación"].value;
+            var habitaciones = document.forms["hotelForm"]["habitaciones_disponibles"].value;
+            var tarifa = document.forms["hotelForm"]["tarifa_noche"].value;
+
+            if (nombre == "" || ubicacion == "" || habitaciones == "" || tarifa == "") {
+                alert("Todos los campos del hotel son obligatorios.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Gestión de Vuelos</h2>
+    <form name="vueloForm" action="procesar_vuelo.php" method="post" onsubmit="return validarFormulario()">
+        Origen: <input type="text" name="origen"><br>
+        Destino: <input type="text" name="destino"><br>
+        Fecha: <input type="date" name="fecha"><br>
+        Plazas Disponibles: <input type="number" name="plazas_disponibles"><br>
+        Precio: <input type="number" step="0.01" name="precio"><br>
+        <input type="submit" value="Agregar Vuelo">
+    </form>
+
+    <h2>Gestión de Hoteles</h2>
+    <form name="hotelForm" action="procesar_hotel.php" method="post" onsubmit="return validarFormulario()">
+        Nombre: <input type="text" name="nombre"><br>
+        Ubicación: <input type="text" name="ubicación"><br>
+        Habitaciones Disponibles: <input type="number" name="habitaciones_disponibles"><br>
+        Tarifa por Noche: <input type="number" step="0.01" name="tarifa_noche"><br>
+        <input type="submit" value="Agregar Hotel">
+    </form>
+</body>
+</html>

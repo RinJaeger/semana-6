@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Vuelo</title>
+    <script>
+        function validateFlightForm() {
+            let origen = document.forms["flightForm"]["origen"].value;
+            let destino = document.forms["flightForm"]["destino"].value;
+            let fecha = document.forms["flightForm"]["fecha"].value;
+            let plazas_disponibles = document.forms["flightForm"]["plazas_disponibles"].value;
+            let precio = document.forms["flightForm"]["precio"].value;
+            if (origen == "" || destino == "" || fecha == "" || plazas_disponibles == "" || precio == "") {
+                alert("Todos los campos son obligatorios.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Agregar Vuelo</h2>
+    <form name="flightForm" action="insert_vuelo.php" method="post" onsubmit="return validateFlightForm()">
+        Origen: <input type="text" name="origen"><br><br>
+        Destino: <input type="text" name="destino"><br><br>
+        Fecha: <input type="date" name="fecha"><br><br>
+        Plazas Disponibles: <input type="number" name="plazas_disponibles"><br><br>
+        Precio: <input type="number" step="0.01" name="precio"><br><br>
+        <input type="submit" value="Agregar Vuelo">
+    </form>
+</body>
+</html>
